@@ -546,7 +546,7 @@ using System.Collections;
 //            Console.WriteLine($" normal_local_price : {normal_local_price}");//100
 
 //            ref_local_price = 200;//값 바꿔주고
-            
+
 //            carrot.printprice(); //200
 //            Console.WriteLine($" ref local price : {ref_local_price}");//200
 //            Console.WriteLine($" normal_local_price : {normal_local_price}");//100 //노멀지역가격 선언 한 번 더 해주면 바뀜
@@ -554,8 +554,8 @@ using System.Collections;
 //    }
 //}
 //출력전용 매개변수 out
-/*out을 이용해서 매개변수를 넘길 때 메소드가 해당 매개변수에 결과를 저장하지 않으면
-컴파일러가 에러 메시지를 출력함*/
+//out을 이용해서 매개변수를 넘길 때 메소드가 해당 매개변수에 결과를 저장하지 않으면
+//컴파일러가 에러 메시지를 출력함
 //namespace usingout
 //{
 //    class mainapp
@@ -589,9 +589,9 @@ using System.Collections;
 
 //            int sum = 0;
 
-//            for(int i = 0; i<args.Length; i++) //배열에 들어온 길이만큼 반복
+//            for (int i = 0; i < args.Length; i++) //배열에 들어온 길이만큼 반복
 //            {
-//                if(i > 0) //0은 더하나마나니깐 1 이상의 숫자들이 뭐가 들어왔는지 보려고
+//                if (i > 0) //0은 더하나마나니깐 1 이상의 숫자들이 뭐가 들어왔는지 보려고
 //                {
 //                    Console.Write(", ");
 //                }
@@ -611,9 +611,9 @@ using System.Collections;
 //    }
 //}
 //명명된 인수
-/*함수를 호출할 때 우리는 매개변수에 순서대로 넣는다 근데 나중에 가면 헷갈릴 수 있어서 이런게 있다
- 함수 호출할때 어디에 넣을건지 명시적으로 해주는거 콜론만 붙여주면 됨*/
-// namespace Namedparameter
+//함수를 호출할 때 우리는 매개변수에 순서대로 넣는다 근데 나중에 가면 헷갈릴 수 있어서 이런게 있다
+// 함수 호출할때 어디에 넣을건지 명시적으로 해주는거 콜론만 붙여주면 됨
+//namespace Namedparameter
 //{
 //    class mainapp
 //    {
@@ -621,7 +621,7 @@ using System.Collections;
 //        {
 //            Console.WriteLine($"Name:{name}, Phone:{phone}");
 //        }
-//        static void Main(string[]args)
+//        static void Main(string[] args)
 //        {
 //            PrintProfile(name: "박찬호", phone: "010-123-1234"); //나중가면 이게 보기 편하다
 //        }
@@ -636,7 +636,7 @@ using System.Collections;
 //        {
 //            Console.WriteLine($"name: {name}, phone : {phone}");
 //        }
-//        static void Main(string[]args)
+//        static void Main(string[] args)
 //        {
 //            printprofile("중근");
 //            printprofile("최홍만", "010-1234-1234");
@@ -644,16 +644,16 @@ using System.Collections;
 //    }
 //}
 //로컬함수
-/*메소드 안에서 선언 선언된 메소드 안에서만 사용되는 함수 클래스 멤버 아님 그래서 함수라고 함
- 메소드 밖에서는 다시 쓸 일 없는 반복적인 작업을 하나의 이름 아래 묶는데 유용함*/
-// namespace Localfunction
+//메소드 안에서 선언 선언된 메소드 안에서만 사용되는 함수 클래스 멤버 아님 그래서 함수라고 함
+// 메소드 밖에서는 다시 쓸 일 없는 반복적인 작업을 하나의 이름 아래 묶는데 유용함
+//namespace Localfunction
 //{
 //    class mainapp
 //    {
 //        static string Tolowerstring(string input)
 //        {
 //            var arr = input.ToCharArray();
-//            for(int i = 0; i<arr.Length; i++)
+//            for (int i = 0; i < arr.Length; i++)
 //            {
 //                arr[i] = TolowerChar(i);
 //            }
@@ -707,7 +707,7 @@ using System.Collections;
 //            cat nero = new cat("네로", "검은색");
 //            Console.WriteLine($"{nero.Name} : {nero.color}");
 //        }
-        
+
 //    }
 //}
 //생성소멸 테스트
@@ -868,3 +868,85 @@ using System.Collections;
 //        }
 //    }
 //}
+//this() 생성자
+//class Myclass
+//{
+//    int a, b, c;
+//    public Myclass()
+//    {
+//        this.a = 5425;
+//        Console.WriteLine("Myclass()");
+//    }
+//    public Myclass(int b) : this()
+//    {
+//        this.b = b;
+//        Console.WriteLine($"Myclass({b})");
+//    }
+//    public Myclass(int b, int c) : this(b)
+//    {
+//        this.c = c;
+//        Console.WriteLine($"Myclass({c})");
+//    }
+//    public void PrintFields()
+//    {
+//        Console.WriteLine($"a:{a}, b:{b}, c:{c}");
+//    }
+//    class mainapp
+//    {
+//        static void Main(string[]args)
+//        {
+//            Myclass a = new Myclass();
+//            a.PrintFields();
+//            Console.WriteLine();
+
+//            Myclass b = new Myclass(1);
+//            b.PrintFields();
+//            Console.WriteLine();
+
+//            Myclass c = new Myclass(10, 20);
+//            c.PrintFields();
+//        }
+//    }
+//}
+namespace AccessModifier
+{
+    class waterheater
+    {
+        protected int temperature;
+
+        public void SetTemperature(int temperature)
+        {
+            if(temperature < -5 || temperature > 42)
+            {
+                throw new Exception("Out of temperature range");
+            }
+            this.temperature = temperature;// protected라 외부에서 접근안되서  public 메소드에서 접근해야됨
+        }
+        internal void TurnOnwater()
+        {
+            Console.WriteLine($"Turn on water : {temperature}");
+        }
+    }
+    class mainapp
+    {
+        static void Main(string[]args)
+        {
+            try
+            {
+                waterheater heater = new waterheater();
+                heater.SetTemperature(20);
+                heater.TurnOnwater();
+
+                heater.SetTemperature(-2);
+                heater.TurnOnwater();
+
+                heater.SetTemperature(50);
+                heater.TurnOnwater();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+    }
+}
