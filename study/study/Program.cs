@@ -674,3 +674,197 @@ using System.Collections;
 //        }
 //    }
 //}
+//namespace cat
+//{
+//    class cat
+//    {
+//        public void Meow()
+//        {
+//            Console.WriteLine($"{Name} : 야옹");
+//        }
+//        public cat()
+//        {
+//            Name = "";
+//            color = "";
+//        }
+//        public cat(string Cat_name, string Cat_color)
+//        {
+//            Name = Cat_name;
+//            color = Cat_color;
+//        }
+//        public string Name;
+//        public string color;
+//    }
+//    class mainapp
+//    {
+//        static void Main()
+//        {
+//            cat nabi = new cat();
+//            nabi.Name = "나비";
+//            nabi.color = "흰색";
+//            nabi.Meow();
+//            Console.WriteLine($"{nabi.Name} : {nabi.color}");
+//            cat nero = new cat("네로", "검은색");
+//            Console.WriteLine($"{nero.Name} : {nero.color}");
+//        }
+        
+//    }
+//}
+//생성소멸 테스트
+//namespace Constructor
+//{
+//    class cat
+//    {
+//        public cat()
+//        {
+//            Name = "";
+//            Color = "";
+//        }
+//        public cat(string cat_Name, string cat_Color)
+//        {
+//            Name = cat_Name;
+//            Color = cat_Color;
+//        }
+//        ~cat() // 소멸자
+//        {
+//            Console.WriteLine($"{Name} : 잘가");
+//            /*가비지 컬렉터가 언제 동작할지 아무도 모른다
+//             그래서 나비가 먼저일수도 네로가 먼저일 수도 있다*/
+//        }
+//        public string Name;
+//        public string Color;
+//        public void Meow()
+//        {
+//            Console.WriteLine($"{Name} : 야옹");
+//        }
+//    }
+//    class main
+//    {
+//        static void Main()
+//        {
+//            cat nabi = new cat();
+//            nabi.Name = "나비";
+//            nabi.Color = "치즈색";
+//            nabi.Meow();
+//            Console.WriteLine($"{nabi.Name} : {nabi.Color}");
+//            cat nero = new cat("네로", "검정색");
+//            nero.Meow();
+//            Console.WriteLine($"{nero.Name} : {nero.Color}");
+//        }
+//    }
+//}
+//static 예시
+//class Global
+//{
+//    public static int count = 0;
+//}
+//class ClassA
+//{
+//    public ClassA()
+//    {
+//        Global.count++;
+//    }
+//}
+//class ClassB
+//{
+//    public ClassB()
+//    {
+//        Global.count++;
+//    }
+//}
+//class mainapp
+//{
+//    static void Main()
+//    {
+//        Console.WriteLine($"Global.count: {Global.count}");
+//        new ClassA();
+//        new ClassA();
+//        new ClassB();
+//        new ClassB();
+
+//        Console.WriteLine($"Global.count: {Global.count}");
+//    }
+//}
+//얕은복사 깊은 복사
+//namespace Deepcopy
+//{
+//    class Myclass
+//    {
+//        public int Myfield1;
+//        public int Myfield2;
+//        public Myclass deepcopy()
+//        {
+//            Myclass newCopy = new Myclass();
+//            newCopy.Myfield1 = this.Myfield1;
+//            newCopy.Myfield2 = this.Myfield2;
+
+//            return newCopy;
+//        }
+//    }
+//    class Mainapp
+//    {
+//        static void Main(string[] args)
+//        {
+//            Console.WriteLine("Shallow copy");
+//            {
+//                Myclass source = new Myclass();
+//                source.Myfield1 = 10;
+//                source.Myfield2 = 20;
+//                Myclass target = source;
+//                target.Myfield2 = 30;
+//                Console.WriteLine($"{source.Myfield1} {source.Myfield2}");
+//                Console.WriteLine($"{target.Myfield1} {target.Myfield2}");
+//            }
+//            Console.WriteLine("Deep Copy");
+//            {
+//                Myclass source = new Myclass();
+//                source.Myfield1 = 10;
+//                source.Myfield2 = 20;
+//                Myclass target = source.deepcopy();//힙에 있는 source 내용을 복사해서 target에 저장 다른 힙에
+//                target.Myfield2 = 30;
+//                Console.WriteLine($"{source.Myfield1} {source.Myfield2}");
+//                Console.WriteLine($"{target.Myfield1} {target.Myfield2}");
+//            }
+//        }
+//    }
+//}
+//this
+//namespace This
+//{
+//    class Employee
+//    {
+//        private string Name;
+//        private string Position;
+
+//        public void SetName(string Name)
+//        {
+//            this.Name = Name;
+//        }
+//        public string GetName()
+//        {
+//            return Name;
+//        }
+//        public void SetPosition(string Position)
+//        {
+//            this.Position = Position;
+//        }
+//        public string GetPosition()
+//        {
+//            return this.Position;
+//        }
+//    }
+//    class Mainapp
+//    {
+//        static void Main(string[] args)
+//        {
+//            Employee pooh = new Employee();
+//            pooh.SetName("pooh");
+//            pooh.SetPosition("waiter");
+//            Console.WriteLine($"{pooh.GetName()} {pooh.GetPosition()}");
+//            Employee tigger = new Employee();
+//            tigger.SetName("Tigger");
+//            tigger.SetPosition("cleaner");
+//            Console.WriteLine($"{tigger.GetName()} {tigger.GetPosition()}");
+//        }
+//    }
+//}
