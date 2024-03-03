@@ -887,7 +887,7 @@ using System.Collections;
 //    }
 //    class mainapp
 //    {
-//        static void Main(string[]args)
+//        static void Main(string[] args)
 //        {
 //            Myclass a = new Myclass();
 //            a.PrintFields();
@@ -920,7 +920,7 @@ using System.Collections;
 //        public void BaseMethod()
 //        {
 //            Console.WriteLine($"{Name}.BaseMethod");
-//        }        
+//        }
 //    }
 //    class Derived : Base // Base 상속받고
 //    {
@@ -950,6 +950,7 @@ using System.Collections;
 //        }
 //    }
 //}
+//throw랑 try
 //namespace AccessModifier
 //{
 //    class waterheater
@@ -958,7 +959,7 @@ using System.Collections;
 
 //        public void SetTemperature(int temperature)
 //        {
-//            if(temperature < -5 || temperature > 42)
+//            if (temperature < -5 || temperature > 42)
 //            {
 //                throw new Exception("Out of temperature range");
 //            }
@@ -971,7 +972,7 @@ using System.Collections;
 //    }
 //    class mainapp
 //    {
-//        static void Main(string[]args)
+//        static void Main(string[] args)
 //        {
 //            try
 //            {
@@ -985,7 +986,7 @@ using System.Collections;
 //                heater.SetTemperature(50);
 //                heater.TurnOnwater();
 //            }
-//            catch(Exception e)
+//            catch (Exception e)
 //            {
 //                Console.WriteLine(e.Message);
 //            }
@@ -1029,7 +1030,7 @@ using System.Collections;
 //            Mammal mammal2 = new Cat();
 
 //            Cat cat = mammal2 as Cat; //형변환 검사
-//            if(cat!=null) //검사하고 실패하면 널로 바꿔주니 조건 null 아닐때
+//            if (cat != null) //검사하고 실패하면 널로 바꿔주니 조건 null 아닐때
 //            {
 //                cat.Meow();
 //            }
@@ -1043,6 +1044,7 @@ using System.Collections;
 //        }
 //    }
 //}
+//오버라이딩
 //namespace overriding
 //{
 //    class Armorsuite
@@ -1348,10 +1350,10 @@ using System.Collections;
 //        }
 //    }
 //}
-//초기화 전용 자동 구현 프로퍼티
-/*데이터 오염방지 readonly, readonly구조체, 튜플
- 프로퍼티 읽기전용으로 선언하는게 불편해서
- 생성자를 통해 필드를 초기화하고 그 필드에 접근하는 프로퍼티는 get 접근자만 갖도록 해야 했음*/
+////초기화 전용 자동 구현 프로퍼티
+///*데이터 오염방지 readonly, readonly구조체, 튜플
+// 프로퍼티 읽기전용으로 선언하는게 불편해서
+// 생성자를 통해 필드를 초기화하고 그 필드에 접근하는 프로퍼티는 get 접근자만 갖도록 해야 했음*/
 //class Transaction
 //{
 //    public Transaction(string _from, string _to, int _amount)
@@ -1363,7 +1365,7 @@ using System.Collections;
 //    string from;
 //    string to;
 //    int amount;
-//    public string From {get{return from;}}
+//    public string From { get { return from; } }
 //    public string To { get { return to; } }
 //    public int Amount { get { return amount; } }
 
@@ -1432,7 +1434,7 @@ using System.Collections;
 //            int average = sum / scores.Length; //배열길이 알려줌
 //            Console.WriteLine($"average score : {average}");
 //        }
-//}
+//    }
 //}
 //Array 클래스의 메소드와 프로퍼티를 활용
 //namespace MoreOnArray
@@ -1489,6 +1491,146 @@ using System.Collections;
 //            Array.Copy(scores, 0, sliced, 0, 3);//scores배열 0~2를 sliced 배열에 복사
 //            Array.ForEach<int>(sliced, new Action<int>(Print));
 //            Console.WriteLine();
+//        }
+//    }
+//}
+//namespace _2darray
+//{
+//    class Mainapp
+//    {
+//        static void Main(string[] agrs)
+//        {
+//            int[,] arr = new int[2, 3] { { 1, 2, 3 }, { 4, 5, 6 } };//2차원 배열 선언
+//            for (int i = 0; i < arr.GetLength(0); i++)
+//            {
+//                for (int j = 0; j < arr.GetLength(1); j++) //GenLength 열의 개수 알 수 있고
+//                {
+//                    Console.Write($"[{i}, {j}] : {arr[i, j]}");
+//                }
+//                Console.WriteLine();
+//            }
+//            Console.WriteLine();
+
+//            int[,] arr2 = new int[,] { { 1, 2, 3 }, { 4, 5, 6 } };
+
+//            for (int i = 0; i < arr2.GetLength(1); i++)
+//            {
+//                for (int j = 0; j < arr2.GetLength(1); j++)
+//                {
+//                    Console.Write($"[{i}, {j}]: {arr[i, j]}");
+//                }
+//                Console.WriteLine();
+//            }
+//            Console.WriteLine();
+//        }
+//    }
+//}
+
+//가변배열 //배열을 요소로 갖는 배열
+//namespace JaggedArray
+//{
+//    class MainApp
+//    {
+//        static void Main(string[] args)
+//        {
+//            int[][] jagged = new int[3][]; //가변배열 선언
+//            jagged[0] = new int[5] { 1, 2, 3, 4, 5 };
+//            jagged[1] = new int[] { 10, 20, 30 };
+//            jagged[2] = new int[] { 100, 200 };
+
+//            foreach (int[] arr in jagged) //arr로 jagged 다 돌고
+//            {
+//                Console.Write($"Length : {arr.Length}, ");
+//                foreach (int e in arr) //배열을 요소로 갖는 배열이기 때문에 arr도 배열 -> foreach로 다 끄집어내고
+//                {
+//                    Console.Write($"{e} ");
+//                }
+//                Console.WriteLine("");
+//            }
+//            Console.WriteLine("");
+//        }
+//    }
+//}
+//컬렉션
+//namespace UsingList
+//{
+//    class Mainapp
+//    {
+//        static void Main(string[] args)
+//        {
+//            ArrayList list = new ArrayList(); //arraylist 인스턴스 생성하고
+//            for (int i = 0; i < 5; i++)
+//                list.Add(i); // list에 추가하고
+//            foreach (object obj in list)
+//                Console.Write($"{obj} ");
+//            Console.WriteLine();
+//            list.RemoveAt(2);//index2번째 요소 삭제하고
+//            foreach (object obj in list)
+//                Console.Write($"{obj} ");
+//            Console.WriteLine();
+
+//            list.Insert(2, 2);//index 2번째에 2 넣어주고
+//            foreach (object obj in list)
+//                Console.Write($"{obj} ");
+//            Console.WriteLine();
+
+//            list.Add("abc");
+//            list.Add("def");
+//            for (int i = 0; i < list.Count; i++)
+//            {
+//                Console.Write($"{list[i]} ");
+//            }
+//            Console.WriteLine();
+
+
+//        }
+//    }
+//}
+//Queue
+//stack
+//hastable
+//namespace Indexer
+//{
+//    class mylist
+//    {
+//        private int[] array;
+
+//        public mylist()
+//        {
+//            array = new int[3];
+//        }
+//        public int this[int index]
+//        {
+//            get
+//            {
+//                return array[index];
+//            }
+//            set
+//            {
+//                if (index >= array.Length)
+//                {
+//                    Array.Resize<int>(ref array, index + 1);
+//                    Console.WriteLine($"array resized : {array.Length}");
+//                }
+//                array[index] = value;
+//            }
+//        }
+//        public int Length
+//        {
+//            get { return array.Length; }
+//        }
+
+
+//    }
+//    class MainApp
+//    {
+//        static void Main(string[] args)
+//        {
+//            mylist list = new mylist();
+//            for (int i = 0; i < 5; i++)
+//                list[i] = i;
+//            for (int i = 0; i < list.Length; i++)
+//                Console.WriteLine(list[i]);
 //        }
 //    }
 //}
