@@ -3,12 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Collections;
 
 //namespace study
@@ -893,7 +887,7 @@ using System.Collections;
 //    }
 //    class mainapp
 //    {
-//        static void Main(string[]args)
+//        static void Main(string[] args)
 //        {
 //            Myclass a = new Myclass();
 //            a.PrintFields();
@@ -908,45 +902,735 @@ using System.Collections;
 //        }
 //    }
 //}
-namespace AccessModifier
-{
-    class waterheater
-    {
-        protected int temperature;
+//base
+//namespace Inheritance
+//{
+//    class Base
+//    {
+//        protected string Name;
+//        public Base(string Name)
+//        {
+//            this.Name = Name;
+//            Console.WriteLine($"{this.Name}.Base");
+//        }
+//        ~Base()
+//        {
+//            Console.WriteLine($"{this.Name}.~Base");
+//        }
+//        public void BaseMethod()
+//        {
+//            Console.WriteLine($"{Name}.BaseMethod");
+//        }
+//    }
+//    class Derived : Base // Base 상속받고
+//    {
+//        public Derived(string Name) : base(Name) //Base(string Name)을 호출
+//        {
+//            Console.WriteLine($"{this.Name}.Derived");
+//        }
+//        ~Derived()
+//        {
+//            Console.WriteLine($"{this.Name}. ~Derived");
+//        }
+//        public void DerivedMethod()
+//        {
+//            Console.WriteLine($"{Name}.DerivedMethod");
+//        }
+//    }
+//    class Mainapp
+//    {
+//        static void Main(string[] args)
+//        {
+//            Base a = new Base("a"); //생성자 만들어주고 Base꺼 //여기서 a를 전달해 주니깐
+//            a.BaseMethod();
 
-        public void SetTemperature(int temperature)
-        {
-            if(temperature < -5 || temperature > 42)
-            {
-                throw new Exception("Out of temperature range");
-            }
-            this.temperature = temperature;// protected라 외부에서 접근안되서  public 메소드에서 접근해야됨
-        }
-        internal void TurnOnwater()
-        {
-            Console.WriteLine($"Turn on water : {temperature}");
-        }
-    }
-    class mainapp
-    {
-        static void Main(string[]args)
-        {
-            try
-            {
-                waterheater heater = new waterheater();
-                heater.SetTemperature(20);
-                heater.TurnOnwater();
+//            Derived b = new Derived("b");
+//            b.BaseMethod();
+//            b.DerivedMethod();
+//        }
+//    }
+//}
+//throw랑 try
+//namespace AccessModifier
+//{
+//    class waterheater
+//    {
+//        protected int temperature;
 
-                heater.SetTemperature(-2);
-                heater.TurnOnwater();
+//        public void SetTemperature(int temperature)
+//        {
+//            if (temperature < -5 || temperature > 42)
+//            {
+//                throw new Exception("Out of temperature range");
+//            }
+//            this.temperature = temperature;// protected라 외부에서 접근안되서  public 메소드에서 접근해야됨
+//        }
+//        internal void TurnOnwater()
+//        {
+//            Console.WriteLine($"Turn on water : {temperature}");
+//        }
+//    }
+//    class mainapp
+//    {
+//        static void Main(string[] args)
+//        {
+//            try
+//            {
+//                waterheater heater = new waterheater();
+//                heater.SetTemperature(20);
+//                heater.TurnOnwater();
 
-                heater.SetTemperature(50);
-                heater.TurnOnwater();
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-    }
-}
+//                heater.SetTemperature(-2);
+//                heater.TurnOnwater();
+
+//                heater.SetTemperature(50);
+//                heater.TurnOnwater();
+//            }
+//            catch (Exception e)
+//            {
+//                Console.WriteLine(e.Message);
+//            }
+//        }
+//    }
+//}
+//namespace TypeCasting
+//{
+//    class Mammal
+//    {
+//        public void Nurse()
+//        {
+//            Console.WriteLine("Nures()");
+//        }
+//    }
+//    class Dog : Mammal
+//    {
+//        public void Bark()
+//        {
+//            Console.WriteLine("Bark()");
+//        }
+//    }
+//    class Cat : Mammal
+//    {
+//        public void Meow()
+//        {
+//            Console.WriteLine("Meow()");
+//        }
+//    }
+//    class Mainapp
+//    {
+//        static void Main(string[] args)
+//        {
+//            Mammal mammal = new Dog();
+//            Dog dog;
+//            if (mammal is Dog) //is는 true false bool 값 반환 형식검사
+//            {
+//                dog = (Dog)mammal;
+//                dog.Bark();
+//            }
+//            Mammal mammal2 = new Cat();
+
+//            Cat cat = mammal2 as Cat; //형변환 검사
+//            if (cat != null) //검사하고 실패하면 널로 바꿔주니 조건 null 아닐때
+//            {
+//                cat.Meow();
+//            }
+//            Cat cat2 = mammal as Cat;
+//            if (cat2 != null)
+//            {
+//                cat2.Meow();
+//            }
+//            else
+//                Console.WriteLine("cat2 is not a cat");
+//        }
+//    }
+//}
+//오버라이딩
+//namespace overriding
+//{
+//    class Armorsuite
+//    {
+//        public virtual void Initialize()//자식이 재정의 할 수 있도록 virtual 붙여줌
+//        {
+//            Console.WriteLine("Armored");
+//        }
+//    }
+//    class IronMan : Armorsuite
+//    {
+//        public override void Initialize()
+//        {
+//            base.Initialize();//부모꺼도 필요하니깐 호출하고
+//            Console.WriteLine("Repulsor Rays Armed");
+//        }
+//    }
+//    class WarMachine : Armorsuite
+//    {
+//        public override void Initialize()
+//        {
+//            base.Initialize();
+//            Console.WriteLine("double barrel");
+//            Console.WriteLine("micro");
+//        }
+//    }
+//    class Mainapp
+//    {
+//        static void Main(string[] args)
+//        {
+//            Console.WriteLine("creatin armorsuite...");
+//            Armorsuite armorsuite = new Armorsuite();
+//            armorsuite.Initialize();
+
+//            Console.WriteLine("\nCreating IrionMan...");
+//            Armorsuite ironman = new IronMan();
+//            ironman.Initialize();
+
+//            Console.WriteLine("creating warmachine...");
+//            Armorsuite warmachine = new WarMachine();
+//            warmachine.Initialize();
+//        }
+//    }
+//}
+//메소드 숨기기
+//namespace MethodHiding
+//{
+//    class Base
+//    {
+//        public void MyMethod()
+//        {
+//            Console.WriteLine("Base.MyMethod");
+//        }
+//    }
+//    class Derived : Base
+//    {
+//        public new void MyMethod()//new를 붙여서 상속받은 MyMethod를 숨긴다
+//        {
+//            Console.WriteLine("Derived.MyMethod");
+//        }
+//    }
+//    class Mainapp
+//    {
+//        static void Main(string[] args)
+//        {
+//            Base baseobj = new Base();
+//            baseobj.MyMethod();
+
+//            Derived derivedobj = new Derived();
+//            derivedobj.MyMethod(); //숨겨져서 derived의 메소드가 출력
+
+//            Base baseorderived = new Derived();
+//            baseorderived.MyMethod();
+//        }
+//    }
+//}
+//중첩클래스
+//using System.Collections.Generic;
+//namespace NestedClass
+//{
+//    class Configuration
+//    {
+//        List<ItemValue>listConfig = new List<ItemValue>();
+
+//        public void SetConfig(string item, string value)
+//        {
+//            ItemValue iv = new ItemValue();
+//            iv.setvalue
+//        }
+//    }
+//}
+
+//구조체
+//namespace Structure
+//{
+//    struct Point3D
+//    {
+//        public int x;
+//        public int y;
+//        public int z;
+
+//        public Point3D(int x, int y, int z)
+//        {
+//            this.x = x;
+//            this.y = y;
+//            this.z = z;
+//        }
+//        public override string ToString()
+//        {
+//            return string.Format($"{x}, {y}, {z}");
+//        }
+//    }
+//    class Mainapp
+//    {
+//        static void Main(string[] args)
+//        {
+//            Point3D p3d1; // 선언만 해도 생성됨
+//            p3d1.x = 10;
+//            p3d1.y = 20;
+//            p3d1.z = 40;
+
+//            Console.WriteLine(p3d1.ToString());
+
+//            Point3D p3d2 = new Point3D(100, 200, 300); //이렇게도 생성됨
+//            Point3D p3d3 = p3d2; //p3d3에 값복사 이루어지고
+//            p3d3.z = 400;//z값만 바꿔주고
+
+//            Console.WriteLine(p3d2.ToString());
+//            Console.WriteLine(p3d3.ToString());
+//        }
+//    }
+//}
+//읽기전용 구조체
+//namespace ReadonlyMethod
+//{
+//    struct ACSetting
+//    {
+//        public double currentInCelsius; //현재 온도
+//        public double target; // 희망 온도
+//        public readonly double GetFahrenheit()//읽기전용
+//        {
+//            //화씨 계산 결과저장
+//            target = currentInCelsius * 1.8 + 32;
+//            return target;
+//        }
+//    }
+//    class Mainapp
+//    {
+//        static void Main(string[] args)
+//        {
+//            ACSetting acs;
+//            //읽기전용인데 예제 구라
+//            acs.currentInCelsius = 25;
+//            acs.target = 25;
+
+//            Console.WriteLine($"{acs.GetFahrenheit()}");
+//            Console.WriteLine($"{acs.target}");
+//        }
+//    }
+//}
+//튜플 2017은 안된다? 7.0부터 된다는데  
+//namespace Tuple
+//{
+//    class MainApp
+//    {
+//        static void Main(string[] args)
+//        {
+//            //var a = ("슈퍼맨", 9999);
+//            //Console.WriteLine($"{a.Item1}, {a.Item2}");
+
+//            //var b = (Name: "박상현", Age: 17);
+//            //Console.WriteLine($"{b.Name}, {b.Age}");
+//            var tuple = (123, 789);
+//            Console.WriteLine($"{tuple.Item1}");
+//        }
+//    }
+//}
+
+//프로퍼티
+//namespace Property
+//{
+//    class Birthdayinfo
+//    {
+//        private string name;
+//        private DateTime birthday;
+
+//        public string Name
+//        {
+//            get //접근자라고 불림
+//            {
+//                return name;
+//            }
+//            set
+//            {
+//                name = value;
+//            }
+//        }
+//        public DateTime Birthday
+//        {
+//            get
+//            {
+//                return birthday;
+//            }
+//            set
+//            {
+//                birthday = value;
+//            }
+//        }
+//        public int Age
+//        {
+//            get//읽기전용
+//            {
+//                return new DateTime(DateTime.Now.Subtract(birthday).Ticks).Year;
+//            }
+//        }
+//    }
+//    class Mainapp
+//    {
+//        static void Main(string[] args)
+//        {
+//            Birthdayinfo birth = new Birthdayinfo();
+//            birth.Name = "서현";
+//            birth.Birthday = new DateTime(1991, 6, 28);
+
+//            Console.WriteLine($"Name : {birth.Name}");
+//            Console.WriteLine($"birthday : {birth.Birthday.ToShortDateString()}");
+//            Console.WriteLine($"Age : {birth.Age}");
+//        }
+//    }
+//}
+//자동완성 프로퍼티
+//namespace AutoImplementProperty
+//{
+//    class BirthdayInfo
+//    {
+//        public string Name
+//        {
+//            get; set;
+//        }
+//        public DateTime Birthday
+//        {
+//            get; set;
+//        }
+//        public int Age
+//        {
+//            get
+//            {
+//                return new DateTime(DateTime.Now.Subtract(Birthday).Ticks).Year;
+//            }
+//        }
+//    }
+//    class Mainapp
+//    {
+//        static void Main(string[] args)
+//        {
+//            BirthdayInfo birth = new BirthdayInfo();
+//            Console.WriteLine($"Name : {birth.Name}");
+//            Console.WriteLine($"Brithday : {birth.Birthday.ToShortDateString()}");
+//            Console.WriteLine($"Age : {birth.Age}");
+
+//            birth.Name = "최홍만";
+//            birth.Birthday = new DateTime(1980, 10, 30);
+
+//            Console.WriteLine($"Name : {birth.Name}");
+//            Console.WriteLine($"Birthday : {birth.Birthday.ToShortDateString()}");
+//            Console.WriteLine($"Age : {birth.Age}");
+//        }
+//    }
+//}
+//프로퍼티와 생성자
+//namespace ConstructorWithProperty
+//{
+//    class BirthdayInfo
+//    {
+//        public string Name
+//        {
+//            get; set;
+//        }
+//        public DateTime Birthday
+//        {
+//            get; set;
+//        }
+//        public int Age
+//        {
+//            get
+//            {
+//                return new DateTime(DateTime.Now.Subtract(Birthday).Ticks).Year;
+//            }
+//        }
+//    }
+//    class Mainapp
+//    {
+//        static void Main(string[] args)
+//        {
+//            BirthdayInfo birth = new BirthdayInfo()
+//            {
+//                Name = "최홍만", // << 세미콜론이 아니라 쉼표다
+//                Birthday = new DateTime(1980, 10, 30)
+//            };
+//            Console.WriteLine($"name : {birth.Name}");
+//            Console.WriteLine($"birthday : {birth.Birthday.ToShortDateString()}");
+//            Console.WriteLine($"age : {birth.Age}");
+//        }
+//    }
+//}
+////초기화 전용 자동 구현 프로퍼티
+///*데이터 오염방지 readonly, readonly구조체, 튜플
+// 프로퍼티 읽기전용으로 선언하는게 불편해서
+// 생성자를 통해 필드를 초기화하고 그 필드에 접근하는 프로퍼티는 get 접근자만 갖도록 해야 했음*/
+//class Transaction
+//{
+//    public Transaction(string _from, string _to, int _amount)
+//    {
+//        from = _from;
+//        to = _to;
+//        amount = _amount;
+//    }
+//    string from;
+//    string to;
+//    int amount;
+//    public string From { get { return from; } }
+//    public string To { get { return to; } }
+//    public int Amount { get { return amount; } }
+
+//}
+//프로퍼티 초기화 강제 required
+/*초기화가 필요한 프로퍼티를 실수로 초기화하지 않는 실수 방지용
+ required 수식하는 프로퍼티를 객체가 초기화될 때 반드시 초기화되도록 컴파일 수준에서 강제함*/
+// namespace RequiredProperty
+//{
+//    class BirthdayInfo
+//    {
+//        public required string Name { get; set; }
+//    }
+//}
+//namespace AutoImplementProperty
+//{
+//    class BirthdayInfo
+//    {
+//        public string Name { get; set; } = "Unknown";
+//        public DateTime Birthday { get; set; } = new DateTime(1, 1, 1);
+//        public int Age
+//        {
+//            get
+//            {
+//                return new DateTime(DateTime.Now.Subtract(Birthday).Ticks).Year;
+//            }
+//        }
+//    }
+//    class Mainapp
+//    {
+//        static void Main(string[] args)
+//        {
+//            BirthdayInfo birth = new BirthdayInfo();
+//            Console.WriteLine($"Name : {birth.Name}");
+//            Console.WriteLine($"Brithday : {birth.Birthday.ToShortDateString()}");
+//            Console.WriteLine($"Age : {birth.Age}");
+
+//            birth.Name = "최홍만";
+//            birth.Birthday = new DateTime(1980, 10, 30);
+
+//            Console.WriteLine($"Name : {birth.Name}");
+//            Console.WriteLine($"Birthday : {birth.Birthday.ToShortDateString()}");
+//            Console.WriteLine($"Age : {birth.Age}");
+//        }
+//    }
+//}
+//배열
+//namespace ArraySample
+//{
+//    class MainApp
+//    {
+//        static void Main(string[] args)
+//        {
+//            int sum = 0;
+//            int[] scores = new int[5];
+//            scores[0] = 80;
+//            scores[1] = 74;
+//            scores[2] = 60;
+//            scores[3] = 50;
+//            scores[4] = 77;
+
+//            foreach (int score in scores)
+//                Console.WriteLine(score);
+//            foreach (int score in scores)
+//                sum += score;
+//            int average = sum / scores.Length; //배열길이 알려줌
+//            Console.WriteLine($"average score : {average}");
+//        }
+//    }
+//}
+//Array 클래스의 메소드와 프로퍼티를 활용
+//namespace MoreOnArray
+//{
+//    class MainApp
+//    {
+//        private static bool checkpassed(int score)
+//        {
+//            return score >= 60;
+//        }
+//        private static void Print(int value)
+//        {
+//            Console.Write($"{value} ");
+//        }
+//        static void Main(string[] args)
+//        {
+//            int[] scores = new int[] { 80, 74, 81, 90, 34 };
+//            foreach (int score in scores)
+//                Console.Write($"{score} ");
+//            Console.WriteLine();
+
+//            Array.Sort(scores); //정렬
+//            Array.ForEach<int>(scores, new Action<int>(Print));//정렬시킨거 출력해주는듯
+//            Console.WriteLine();
+
+//            Console.WriteLine($"Number of dimensions : {scores.Rank}");//배열 차원 반환
+
+//            Console.WriteLine($"Binary Search : 81 is at " + $"{Array.BinarySearch<int>(scores, 81)}");//이진탐색수행?
+
+//            Console.WriteLine($"Linear Search : 90 is at " + $"{Array.IndexOf(scores, 90)}");//scores에서 90인 인덱스 값
+//            //배열의 모든 요소가 지정한 조건에 부합하는지 여부 반환
+//            //조건 검사하는 메소드를 매개변수로 받음
+//            Console.WriteLine($"Everyone passed ? :" + $"{Array.TrueForAll<int>(scores, checkpassed)}");
+
+//            //FindIndex는 특정 조건에 부합하는 메소드를 매개변수로 받는다
+//            int index = Array.FindIndex<int>(scores, (score) => score < 60);//이건 람다식 구현
+
+//            scores[index] = 61;
+//            Console.WriteLine($"Everyone passed ? :" + $"{Array.TrueForAll<int>(scores, checkpassed)}");
+
+//            Console.WriteLine("Old length of scores :" + $"{scores.GetLength(0)}");//배열에서 지정한 차원 길이 반환
+
+//            Array.Resize<int>(ref scores, 10); //배열 길이 재조정 10으로
+//            Console.WriteLine($"New length of scores:{scores.Length}");
+
+//            Array.ForEach<int>(scores, new Action<int>(Print));//action 대리자 14장
+//            Console.WriteLine();
+
+//            Array.Clear(scores, 3, 7);
+//            Array.ForEach<int>(scores, new Action<int>(Print));
+//            Console.WriteLine();
+
+//            int[] sliced = new int[3];
+//            Array.Copy(scores, 0, sliced, 0, 3);//scores배열 0~2를 sliced 배열에 복사
+//            Array.ForEach<int>(sliced, new Action<int>(Print));
+//            Console.WriteLine();
+//        }
+//    }
+//}
+//namespace _2darray
+//{
+//    class Mainapp
+//    {
+//        static void Main(string[] agrs)
+//        {
+//            int[,] arr = new int[2, 3] { { 1, 2, 3 }, { 4, 5, 6 } };//2차원 배열 선언
+//            for (int i = 0; i < arr.GetLength(0); i++)
+//            {
+//                for (int j = 0; j < arr.GetLength(1); j++) //GenLength 열의 개수 알 수 있고
+//                {
+//                    Console.Write($"[{i}, {j}] : {arr[i, j]}");
+//                }
+//                Console.WriteLine();
+//            }
+//            Console.WriteLine();
+
+//            int[,] arr2 = new int[,] { { 1, 2, 3 }, { 4, 5, 6 } };
+
+//            for (int i = 0; i < arr2.GetLength(1); i++)
+//            {
+//                for (int j = 0; j < arr2.GetLength(1); j++)
+//                {
+//                    Console.Write($"[{i}, {j}]: {arr[i, j]}");
+//                }
+//                Console.WriteLine();
+//            }
+//            Console.WriteLine();
+//        }
+//    }
+//}
+
+//가변배열 //배열을 요소로 갖는 배열
+//namespace JaggedArray
+//{
+//    class MainApp
+//    {
+//        static void Main(string[] args)
+//        {
+//            int[][] jagged = new int[3][]; //가변배열 선언
+//            jagged[0] = new int[5] { 1, 2, 3, 4, 5 };
+//            jagged[1] = new int[] { 10, 20, 30 };
+//            jagged[2] = new int[] { 100, 200 };
+
+//            foreach (int[] arr in jagged) //arr로 jagged 다 돌고
+//            {
+//                Console.Write($"Length : {arr.Length}, ");
+//                foreach (int e in arr) //배열을 요소로 갖는 배열이기 때문에 arr도 배열 -> foreach로 다 끄집어내고
+//                {
+//                    Console.Write($"{e} ");
+//                }
+//                Console.WriteLine("");
+//            }
+//            Console.WriteLine("");
+//        }
+//    }
+//}
+//컬렉션
+//namespace UsingList
+//{
+//    class Mainapp
+//    {
+//        static void Main(string[] args)
+//        {
+//            ArrayList list = new ArrayList(); //arraylist 인스턴스 생성하고
+//            for (int i = 0; i < 5; i++)
+//                list.Add(i); // list에 추가하고
+//            foreach (object obj in list)
+//                Console.Write($"{obj} ");
+//            Console.WriteLine();
+//            list.RemoveAt(2);//index2번째 요소 삭제하고
+//            foreach (object obj in list)
+//                Console.Write($"{obj} ");
+//            Console.WriteLine();
+
+//            list.Insert(2, 2);//index 2번째에 2 넣어주고
+//            foreach (object obj in list)
+//                Console.Write($"{obj} ");
+//            Console.WriteLine();
+
+//            list.Add("abc");
+//            list.Add("def");
+//            for (int i = 0; i < list.Count; i++)
+//            {
+//                Console.Write($"{list[i]} ");
+//            }
+//            Console.WriteLine();
+
+
+//        }
+//    }
+//}
+//Queue
+//stack
+//hastable
+//namespace Indexer
+//{
+//    class mylist
+//    {
+//        private int[] array;
+
+//        public mylist()
+//        {
+//            array = new int[3];
+//        }
+//        public int this[int index]
+//        {
+//            get
+//            {
+//                return array[index];
+//            }
+//            set
+//            {
+//                if (index >= array.Length)
+//                {
+//                    Array.Resize<int>(ref array, index + 1);
+//                    Console.WriteLine($"array resized : {array.Length}");
+//                }
+//                array[index] = value;
+//            }
+//        }
+//        public int Length
+//        {
+//            get { return array.Length; }
+//        }
+
+
+//    }
+//    class MainApp
+//    {
+//        static void Main(string[] args)
+//        {
+//            mylist list = new mylist();
+//            for (int i = 0; i < 5; i++)
+//                list[i] = i;
+//            for (int i = 0; i < list.Length; i++)
+//                Console.WriteLine(list[i]);
+//        }
+//    }
+//}
