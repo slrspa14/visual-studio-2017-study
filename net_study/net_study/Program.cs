@@ -229,17 +229,37 @@ using System.Threading.Tasks;
 //    }
 //}
 //이벤트
-namespace EventTest
-{
-    delegate void EventHandler(string message);
+//namespace EventTest
+//{
+//    delegate void EventHandler(string message);
 
-    class Mynotifier
-    {
-        public event EventHandler SomthingHappend;
-        public void Dosomething(int number)
-        {
-            int temp = number % 10;
-            if(temp != 0 && temp %3 ==0)
-        }
-    }
-}
+//    class Mynotifier
+//    {
+//        public event EventHandler SomthingHappend;
+//        public void Dosomething(int number)
+//        {
+//            int temp = number % 10;
+//            if (temp != 0 && temp % 3 == 0)
+//            {
+//                SomthingHappend(string.Format("{0} : 짝", number));
+//            }
+//        }
+//    }
+//    class Mainapp
+//    {
+//        static public void MyHandler(string message)
+//        {
+//            Console.WriteLine(message);
+//        }
+//        static void Main(string[]args)
+//        {
+//            Mynotifier notifier = new Mynotifier();
+//            notifier.SomthingHappend += new EventHandler(MyHandler);
+
+//            for(int i=0; i< 30; i++)
+//            {
+//                notifier.Dosomething(i);
+//            }
+//        }
+//    }
+//}
